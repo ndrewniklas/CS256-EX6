@@ -34,6 +34,12 @@ public:
 	String operator+(const String& right) const;
 	String operator+(char c) const;
 	
+	bool operator==(const String& right) const;
+	bool operator<(const String& right) const;
+	bool operator!=(const String& right) const;
+	bool operator>(const String& right) const;
+	bool operator<=(const String& right) const;
+	bool operator>=(const String& right) const;
 	
 };
 

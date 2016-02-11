@@ -106,21 +106,73 @@ String String::operator+(const String& right) const{
 }
 
 String String::operator+(char c) const{
-	int newAlloc = allocated;
-	std::cout << "INSIDE" << std::endl;
-	std::cout << "allocated: " << allocated << std::endl;
-	std::cout << "size: " << size << std::endl;
-	if(allocated < (size + 1)){
-		newAlloc = size + 1;
-	}
-	char* temp = new char[newAlloc];
-	std::cout << "newAlloc: " << newAlloc << std::endl;
+	// int newAlloc = allocated;
+	// std::cout << "INSIDE" << std::endl;
+	// std::cout << "allocated: " << allocated << std::endl;
+	// std::cout << "size: " << size << std::endl;
+	// if(allocated < (size + 1)){
+		// newAlloc = size + 1;
+	// }
+	// char* temp = new char[newAlloc];
+	char* temp = new char[size + 1];
+	// std::cout << "newAlloc: " << newAlloc << std::endl;
 	for(int i = 0; i < size; ++i){
 		temp[i] = data[i];
 	}
 	temp[size] = c;
-	std::cout << "new Size: " << strlen(temp) << std::endl;
+	// std::cout << "new Size: " << strlen(temp) << std::endl;
 	return String(temp);
+}
+
+bool String::operator==(const String& right) const{
+	if(size != right.size){
+		return false;
+	}else{
+		for(int i = 0; i < size; ++i){
+			if(data[i] != right.data[i]){
+				return false;
+			}
+		}
+		return true;
+	}
+}
+
+bool String::operator<(const String& right) const{
+	for(int i = 0; i < size; ++i){
+		if(data[i] < right.data[i]){
+			break;
+		}else{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool String::operator!=(const String& right) const{
+	return !(*this == right);
+}
+
+bool String::operator>(const String& right) const{
+	if(!(*this == right)){
+		return !(*this < right);
+	}
+	return false;
+}
+
+bool String::operator<=(const String& right) const{
+	if((*this == right) || (*this < right)){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+bool String::operator>=(const String& right) const{
+	if((*this == right) || (*this > right)){
+		return true;
+	}else{
+		return false;
+	}
 }
 
 
