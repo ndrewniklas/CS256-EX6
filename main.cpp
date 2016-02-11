@@ -78,6 +78,12 @@ public:
         const char *res = "abcdeabcde";
         printResult("String Concatenation", s3.size == s1.size + s2.size && strncmp(s3.data, res, s3.size) == 0);
         s3 = (s3 + 'f') + 'g';
+		std::cout << s3.size << std::endl;
+		std::cout << s3.allocated << std::endl;
+		for(int i = 0; i < s3.size - 1; ++i){
+			std::cout << s3.data[i] << " ";
+		}
+		std::cout << s3.data[s3.size] << std::endl;
         const char *res2 = "abcdeabcdefg";
         printResult("char Concatenation", s3.size == s1.size + s2.size + 2 && strncmp(s3.data, res2, s3.size) == 0);
     }

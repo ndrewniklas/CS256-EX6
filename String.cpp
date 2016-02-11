@@ -107,16 +107,19 @@ String String::operator+(const String& right) const{
 
 String String::operator+(char c) const{
 	int newAlloc = allocated;
-	if(allocated < size + 1){
-		newAlloc = size * 2 + 1;
+	std::cout << "INSIDE" << std::endl;
+	std::cout << "allocated: " << allocated << std::endl;
+	std::cout << "size: " << size << std::endl;
+	if(allocated < (size + 1)){
+		newAlloc = size + 1;
 	}
 	char* temp = new char[newAlloc];
-	int j = 0;
-	for(int i = 0; i < size; ++i, ++j){
+	std::cout << "newAlloc: " << newAlloc << std::endl;
+	for(int i = 0; i < size; ++i){
 		temp[i] = data[i];
 	}
-	++j;
-	temp[j] = c;
+	temp[size] = c;
+	std::cout << "new Size: " << strlen(temp) << std::endl;
 	return String(temp);
 }
 
