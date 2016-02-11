@@ -23,7 +23,7 @@ public:
 
 // Uncomment one at a time as you fill in features for your class
 
-/*
+
     void testConstructors() const
     {
         String s1;
@@ -145,7 +145,7 @@ int main()
     
     // Uncomment one at a time as you add features to your class
     
-    //st.testConstructors();
+    st.testConstructors();
     //st.testAssignment();
     //st.testUtility();
     //st.testConcat();
