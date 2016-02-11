@@ -22,6 +22,15 @@ public:
 	String(const String& other);
 	~String();
 	
+	String& operator=(const String& right);
+	
+	int length() const;
+	char charAt(int n) const;
+	int indexOf(char c) const;
+	char& operator[](int n);
+	const char& operator[](int n) const;
+	
+	
 };
 
 #endif

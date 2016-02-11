@@ -33,5 +33,78 @@ String::String(const String& other)
 }
 
 String::~String(){
-	delete [] data;
+	if(data != nullptr){
+		delete [] data;
+		data = nullptr;
+	}
+	size = 0;
 }
+
+String& String::operator=(const String& right){
+	if(this == &right){
+		return *this;
+	}
+	
+	if(size < right.size){
+		delete data;
+		data = new char[right.size];
+		size = right.size;
+	}
+	size = right.size;
+	for(int i = 0; i < size; ++i){
+		data[i] = right.data[i];
+	}
+	return *this;
+}
+
+int String::length() const{
+	return size;
+}
+
+char String::charAt(int n) const{
+	return data[n];
+}
+
+int String::indexOf(char c) const{
+	for(int i = 0; i < size; ++i){
+		if(data[i] == c){
+			return i;
+		}
+	}
+	return -1;
+}
+
+char& String::operator[](int n){
+	//if modifing
+	return data[n];	
+}
+
+const char& String::operator[](int n) const{
+	//if reading
+	return data[n];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -41,7 +41,7 @@ public:
         s2.data[1] = '1';
         printResult("Copy Constructor Deep Copy Test", s3.size == s2.size && strncmp(s2.data, s3.data, 5) != 0);
     }
-/*
+
     void testAssignment() const
     {
         char s[6] = {'a', 'b', 'c', 'd', 'e', '\0'};
@@ -54,7 +54,7 @@ public:
         s1 = s1 = s1 = s1 = s1 = s1;
         printResult("Self Assignment Test", s1.size == 5 && strncmp(s, s1.data, 5) == 0);
     }
-/*
+
     void testUtility() const
     {
         char s[6] = {'a', 'b', 'c', 'd', 'e', '\0'};
@@ -146,8 +146,8 @@ int main()
     // Uncomment one at a time as you add features to your class
     
     st.testConstructors();
-    //st.testAssignment();
-    //st.testUtility();
+    st.testAssignment();
+    st.testUtility();
     //st.testConcat();
     //st.testRelational();
     //st.testSubstring();
