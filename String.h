@@ -14,6 +14,7 @@ private:
     // declare private members here
 	char* data;
 	int size;
+	int allocated;
 public:
     // declare public members here
 	String();
@@ -29,6 +30,9 @@ public:
 	int indexOf(char c) const;
 	char& operator[](int n);
 	const char& operator[](int n) const;
+	
+	String operator+(const String& right) const;
+	String operator+(char c) const;
 	
 	
 };

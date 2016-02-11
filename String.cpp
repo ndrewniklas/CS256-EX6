@@ -6,18 +6,18 @@
 
 // Put your function implementations here
 String::String()
-	:data(new char[10]), size(0)
+	:data(new char[10]), size(0), allocated(10)
 {
 }
 
 String::String(char c)
-	:data(new char[10]), size(1)
+	:data(new char[10]), size(1), allocated(10)
 {
 	data[0] = c;	
 }
 
 String::String(const char* s)
-	:data(new char[strlen(s)]), size(strlen(s))
+	:data(new char[strlen(s)]), size(strlen(s)), allocated(strlen(s))
 {
 	for(int i = 0; i < size; ++i){
 		data[i] = s[i];
@@ -25,7 +25,7 @@ String::String(const char* s)
 }
 
 String::String(const String& other)
-	:data(new char[other.size]), size(other.size)
+	:data(new char[other.size]), size(other.size), allocated(other.size)
 {
 	for(int i = 0; i < size; ++i){
 		data[i] = other.data[i];
@@ -38,6 +38,7 @@ String::~String(){
 		data = nullptr;
 	}
 	size = 0;
+	allocated = 0;
 }
 
 String& String::operator=(const String& right){
@@ -45,10 +46,10 @@ String& String::operator=(const String& right){
 		return *this;
 	}
 	
-	if(size < right.size){
-		delete data;
+	if(allocated < right.size){
+		delete [] data;
 		data = new char[right.size];
-		size = right.size;
+		allocated = right.size;
 	}
 	size = right.size;
 	for(int i = 0; i < size; ++i){
@@ -82,6 +83,41 @@ char& String::operator[](int n){
 const char& String::operator[](int n) const{
 	//if reading
 	return data[n];
+}
+
+String String::operator+(const String& right) const{
+	int newAlloc = allocated;
+	if(allocated < (size + right.size)){
+		if(size >= right.size){
+			newAlloc = size * 2 + 1;
+		}else{
+			newAlloc = right.size * 2 + 1;
+		}
+	}
+	char* temp = new char[newAlloc];
+	int i = 0;
+	for(; i < size; ++i){
+		temp[i] = data[i];
+	}
+	for(int j = 0; j < right.size; ++j, ++i){
+		temp[i] = right.data[j];
+	}
+	return String(temp);
+}
+
+String String::operator+(char c) const{
+	int newAlloc = allocated;
+	if(allocated < size + 1){
+		newAlloc = size * 2 + 1;
+	}
+	char* temp = new char[newAlloc];
+	int j = 0;
+	for(int i = 0; i < size; ++i, ++j){
+		temp[i] = data[i];
+	}
+	++j;
+	temp[j] = c;
+	return String(temp);
 }
 
 

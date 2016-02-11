@@ -67,7 +67,7 @@ public:
         s1[0] = 'X';
         printResult("operator[] write", s1[0] == 'X' && s1[1] == 'b' && s1[2] == 'c' && s1[3] == 'd');
     }
-/*
+
     void testConcat() const
     {
         char s[6] = {'a', 'b', 'c', 'd', 'e', '\0'};
@@ -148,7 +148,7 @@ int main()
     st.testConstructors();
     st.testAssignment();
     st.testUtility();
-    //st.testConcat();
+    st.testConcat();
     //st.testRelational();
     //st.testSubstring();
     //st.testIO();
