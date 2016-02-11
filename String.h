@@ -41,6 +41,8 @@ public:
 	bool operator<=(const String& right) const;
 	bool operator>=(const String& right) const;
 	
+	String substring(int start, int end) const;
+	
 };
 
 #endif

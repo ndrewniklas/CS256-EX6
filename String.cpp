@@ -120,7 +120,9 @@ String String::operator+(char c) const{
 		temp[i] = data[i];
 	}
 	temp[size] = c;
+	temp[size + 1] = '\0';
 	// std::cout << "new Size: " << strlen(temp) << std::endl;
+	// std::cout << "temp: " << temp << std::endl;
 	return String(temp);
 }
 
@@ -173,6 +175,27 @@ bool String::operator>=(const String& right) const{
 	}else{
 		return false;
 	}
+}
+
+String String::substring(int start, int end) const{
+	if(start < 0 || start > size){
+		return String();
+	}else if(end <= start){
+		return String();
+	}else if(end > size){
+		end = size;
+	}
+	char* temp = new char[end - start];
+	for(int i = start; i < end; ++i){
+		temp[i] = data[i];
+	}
+	temp[end] = '\0';
+	std::cout << "temp: " << temp << std::endl;
+	for(int i = 0; i < strlen(temp); ++i){
+		std::cout << ((int)temp[i]) << " ";
+	}
+	std::cout << std::endl;
+	return String(temp);
 }
 
 

@@ -103,7 +103,7 @@ public:
         printResult("Test <=", s1 <= s2 && s2 <= s4 && s3 <= s2 && !(s2 <= s1));
         printResult("Test >=", !(s1 >= s2) && s2 >= s4 && s2 >= s3 && s2 >= s1);
     }
-/*
+
     void testSubstring() const
     {
         const char *c = "abcdefghijk";
@@ -156,7 +156,7 @@ int main()
     st.testUtility();
     st.testConcat();
     st.testRelational();
-    //st.testSubstring();
+    st.testSubstring();
     //st.testIO();
     
     return 0;
