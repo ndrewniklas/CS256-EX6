@@ -102,7 +102,9 @@ String String::operator+(const String& right) const{
 	for(int j = 0; j < right.size; ++j, ++i){
 		temp[i] = right.data[j];
 	}
-	return String(temp);
+	String s = String(temp);
+	delete [] temp;
+	return s;
 }
 
 String String::operator+(char c) const{
@@ -111,10 +113,10 @@ String String::operator+(char c) const{
 	// std::cout << "allocated: " << allocated << std::endl;
 	// std::cout << "size: " << size << std::endl;
 	// if(allocated < (size + 1)){
-		// newAlloc = size + 1;
+	//		newAlloc = size + 1;
 	// }
 	// char* temp = new char[newAlloc];
-	char* temp = new char[size + 1];
+	char* temp = new char[size + 2];
 	// std::cout << "newAlloc: " << newAlloc << std::endl;
 	for(int i = 0; i < size; ++i){
 		temp[i] = data[i];
@@ -123,7 +125,9 @@ String String::operator+(char c) const{
 	temp[size + 1] = '\0';
 	// std::cout << "new Size: " << strlen(temp) << std::endl;
 	// std::cout << "temp: " << temp << std::endl;
-	return String(temp);
+	String s = String(temp);
+	delete [] temp;
+	return s;
 }
 
 bool String::operator==(const String& right) const{
@@ -186,16 +190,21 @@ String String::substring(int start, int end) const{
 		end = size;
 	}
 	char* temp = new char[end - start];
-	for(int i = start; i < end; ++i){
-		temp[i] = data[i];
+	int j = 0;
+	for(int i = start; i < end; ++i, ++j){
+		temp[j] = data[i];
 	}
-	temp[end] = '\0';
-	std::cout << "temp: " << temp << std::endl;
-	for(int i = 0; i < strlen(temp); ++i){
-		std::cout << ((int)temp[i]) << " ";
-	}
-	std::cout << std::endl;
-	return String(temp);
+	temp[j] = '\0';
+	
+	// std::cout << "temp: " << temp << std::endl;
+	// for(int i = 0; i < strlen(temp); ++i){
+	// 	std::cout << ((int)temp[i]) << " ";
+	// }
+	// std::cout << std::endl;
+	
+	String s = String(temp);
+	delete [] temp;
+	return s;
 }
 
 
