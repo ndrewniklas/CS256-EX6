@@ -47,6 +47,6 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const String& s);
-std::istream& operator>>(std::istream& is, const String& s);
+std::istream& operator>>(std::istream& is, String& s);
 
 #endif

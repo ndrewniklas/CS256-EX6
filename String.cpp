@@ -205,13 +205,10 @@ std::ostream& operator<<(std::ostream& os, const String& s){
 	return os;
 }
 
-std::istream& operator>>(std::istream& is, const String& s){
+std::istream& operator>>(std::istream& is, String& s){
 	std::string str;
 	is >> str;
-	// std::cout << str << std::endl;
-	for(int i = 0; i < str.size(); ++i){
-		s.data[i] = str[i];
-	}
+	s = String(str.c_str());
 	return is;
 }
 
