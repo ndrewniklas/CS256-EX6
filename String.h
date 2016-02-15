@@ -9,6 +9,7 @@ class StringTester;
 class String
 {
     friend class StringTester;
+	friend std::istream& operator>>(std::istream& is, const String& s);
 
 private:
     // declare private members here
@@ -42,7 +43,10 @@ public:
 	bool operator>=(const String& right) const;
 	
 	String substring(int start, int end) const;
-	
+	std::string str() const;
 };
+
+std::ostream& operator<<(std::ostream& os, const String& s);
+std::istream& operator>>(std::istream& is, const String& s);
 
 #endif

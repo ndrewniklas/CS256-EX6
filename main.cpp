@@ -123,7 +123,7 @@ public:
         const char *ss2 = "efghijk";
         printResult("substring high end", s2.size == 7 && strncmp(s2.data, ss2, 7) == 0);
     }
-/* 
+ 
     void testIO() const
     {
         std::ostringstream sout;
@@ -139,7 +139,7 @@ public:
         sin >> s3;
         printResult("Test >>", s1 == s3);
     }
-*/
+
 };
 
 
@@ -157,7 +157,7 @@ int main()
     st.testConcat();
     st.testRelational();
     st.testSubstring();
-    //st.testIO();
+    st.testIO();
     
     return 0;
 }

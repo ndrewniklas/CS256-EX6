@@ -108,23 +108,13 @@ String String::operator+(const String& right) const{
 }
 
 String String::operator+(char c) const{
-	// int newAlloc = allocated;
-	// std::cout << "INSIDE" << std::endl;
-	// std::cout << "allocated: " << allocated << std::endl;
-	// std::cout << "size: " << size << std::endl;
-	// if(allocated < (size + 1)){
-	//		newAlloc = size + 1;
-	// }
-	// char* temp = new char[newAlloc];
 	char* temp = new char[size + 2];
-	// std::cout << "newAlloc: " << newAlloc << std::endl;
 	for(int i = 0; i < size; ++i){
 		temp[i] = data[i];
 	}
 	temp[size] = c;
 	temp[size + 1] = '\0';
-	// std::cout << "new Size: " << strlen(temp) << std::endl;
-	// std::cout << "temp: " << temp << std::endl;
+	
 	String s = String(temp);
 	delete [] temp;
 	return s;
@@ -196,17 +186,34 @@ String String::substring(int start, int end) const{
 	}
 	temp[j] = '\0';
 	
-	// std::cout << "temp: " << temp << std::endl;
-	// for(int i = 0; i < strlen(temp); ++i){
-	// 	std::cout << ((int)temp[i]) << " ";
-	// }
-	// std::cout << std::endl;
-	
 	String s = String(temp);
 	delete [] temp;
 	return s;
 }
 
+std::string String::str() const{
+    std::string str;
+    for (int i = 0; i < size; i++)
+    {
+        str.push_back(data[i]);
+    }
+    return str;
+}
+
+std::ostream& operator<<(std::ostream& os, const String& s){
+	os << s.str();
+	return os;
+}
+
+std::istream& operator>>(std::istream& is, const String& s){
+	std::string str;
+	is >> str;
+	// std::cout << str << std::endl;
+	for(int i = 0; i < str.size(); ++i){
+		s.data[i] = str[i];
+	}
+	return is;
+}
 
 
 
