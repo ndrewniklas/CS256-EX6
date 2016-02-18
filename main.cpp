@@ -1,5 +1,5 @@
 //Andrew Niklas
-//Homework 4
+//Exercise 6
 //Completed 2/15/2016
 
 
