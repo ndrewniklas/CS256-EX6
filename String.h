@@ -1,3 +1,8 @@
+//Andrew Niklas
+//Homework 4
+//Completed 2/15/2016
+
+
 #ifndef STRING_H
 #define STRING_H
 
